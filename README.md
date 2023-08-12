@@ -1,4 +1,4 @@
-# todo (in golang)
+# todo (in golang)   ![go workflow](https://github.com/elusive/go-todo/actions/workflows/go.yml/badge.svg) 
 Go command line utility todo, for saving tasks and completed state to/from a json file.
 
 ## Overview
