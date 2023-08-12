@@ -30,28 +30,45 @@ env GOOS=linux GOARCH=386 go build
 ### CLI Tests
 The cmd folder contains the cli interface on top of the todo api. The tests for this cli utilize the os package
 and will build the todo binary and use it in the tests via the `os.exec.Command` method in order to make sure 
-that the cli commands are functional.
+that the cli commands are functional. In order to run these test you need to be in the cmd/todo/ directory:
+```bash
+cd cmd/todo
+go test -v
+```
+The output for the current cli tests should look like this:
+```
+Building tool...
+Running Tests...
+=== RUN   TestTodoCli
+=== RUN   TestTodoCli/TestAddNewTask
+=== RUN   TestTodoCli/TestListTasks
+--- PASS: TestTodoCli (0.30s)
+    --- PASS: TestTodoCli/TestAddNewTask (0.26s)
+    --- PASS: TestTodoCli/TestListTasks (0.03s)
+PASS
+Cleaning Up...
+ok      github.com/elusive/todo/cmd/todo        1.057s
+```
 
-### Execute Tests
+### Unit Tests
 Remember that to execute the tests for the todo api you need to have built the todo binary using `go build` and
 the cli tests will rebuild the binary on their own as part of the tests code. You can execute these tests also, 
 using this command:
 ```bash
 go test -v
 ```
-
 The current unit tests should result in the following output to the terminal:
 ```bash
-=== RUN   TestCountWords
---- PASS: TestCountWords (0.00s)
-=== RUN   TestCountLines
---- PASS: TestCountLines (0.00s)
-=== RUN   TestCountBytes
---- PASS: TestCountBytes (0.00s)
-=== RUN   TestLines
---- PASS: TestLines (0.00s)
+=== RUN   TestAdd
+--- PASS: TestAdd (0.00s)
+=== RUN   TestComplete
+--- PASS: TestComplete (0.00s)
+=== RUN   TestDelete
+--- PASS: TestDelete (0.00s)
+=== RUN   TestSaveGet
+--- PASS: TestSaveGet (0.00s)
 PASS
-ok      github.com/elusive/words        0.056s
+ok      github.com/elusive/todo 0.056s
 ```
 
 ## Further Questions
